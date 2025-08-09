@@ -1,0 +1,174 @@
+:root {
+  --accent:#1976d2;
+  --muted:#65748b;
+  font-family: Inter, Roboto, sans-serif;
+}
+
+body {
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg,#e8f0fb 0%, #f7fbff 100%);
+}
+
+.weather-wrap {
+  max-width:900px;
+  width:100%;
+  background:white;
+  box-shadow: 0 8px 30px rgba(20,30,60,0.08);
+  border-radius:14px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+@media (max-width:900px) {
+  .weather-wrap { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+.left {
+  padding:20px;
+  background:#fafafa;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo {
+  background:var(--accent);
+  color:white;
+  width:40px;
+  height:40px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.search {
+  display:flex;
+  gap:5px;
+  margin-top:10px;
+}
+
+.search input {
+  flex:1;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+.search button {
+  padding:10px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.search .secondary-btn {
+  background:#4caf50;
+}
+.info{
+    margin-top: 10px;
+    color: black;
+    font-style: oblique;
+}
+
+.msg {
+  margin-top:8px;
+  font-size:13px;
+  color:red;
+}
+
+.right {
+  padding:20px;
+}
+
+.temp {
+  font-size:48px;
+  margin:10px 0;
+}
+
+.meta-list {
+  display:flex;
+  gap:10px;
+}
+
+.meta-item {
+  background:#f5f5f5;
+  padding:8px;
+  border-radius:6px;
+  text-align:center;
+}
+
+.forecast-section {
+  margin-top:20px;
+}
+
+.forecast-cards {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 5px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) #e0e0e0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.forecast-card {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 6px;
+  min-width: 80px;
+  text-align: center;
+  scroll-snap-align: start;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.forecast-card:hover {
+  transform: scale(1.05);
+}
+
+.forecast-card.active {
+  background: var(--accent);
+  color: white;
+}
+
+.forecast-card.active img {
+  filter: brightness(0) invert(1);
+}
+
+.attribution {
+  grid-column:1 / -1;
+  padding:10px;
+  font-size:12px;
+  text-align:center;
+  background:#f0f0f0;
+}
+
+@media (max-width: 600px) {
+    .search {
+        flex-direction: column;
+        margin-right: 10px;
+    }
+
+    .forecast-section {
+        gap: 10px;
+    }
+
+    .forecast-card {
+        min-width: 80px;
+    }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weather App with Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="weather-wrap">
+    <div class="left">
+      <div class="brand">
+        <div class="logo">W</div>
+        <div>
+          <h1>Weather App</h1>
+          <p class="subtitle">Current weather, hourly & daily forecast</p>
+        </div>
+      </div>
+
+      <div class="search">
+        <input id="locationInput" type="text" placeholder="Enter city name or ZIP/postcode" />
+        <button id="searchBtn">Get Weather</button>
+        <button id="locateBtn" class="secondary-btn">📍 Detect</button>
+      </div>
+
+      <div class="info">
+        <div class="card-small" id="lastUpdated" style="display:none;"></div>
+      </div>
+
+      <div id="message" class="msg"></div>
+    </div>
+
+    <div class="right">
+      
+      <div id="currentWeather">
+        <div id="iconWrap">
+          <img id="conditionIcon" src="" alt="" width="64" height="64" style="display:none;">
+          <div>
+            <p class="location" id="place">—</p>
+            <p class="cond" id="conditionText">—</p>
+          </div>
+        </div>
+        <h2 class="temp"><span id="tempNum">--</span><small>°C</small></h2>
+        <div class="meta-list">
+          <div class="meta-item">
+            <b id="feelsLike">--°C</b>Feels like
+          </div>
+          <div class="meta-item">
+            <b id="humidity">--%</b>Humidity
+          </div>
+          <div class="meta-item">
+            <b id="wind">-- kph</b>Wind
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="forecast-section">
+        <h3>Hourly Forecast</h3>
+        <div class="forecast-cards" id="hourlyForecast"></div>
+      </div>
+
+      
+      <div class="forecast-section">
+        <h3>Daily Forecast</h3>
+        <div class="forecast-cards" id="dailyForecast"></div>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
