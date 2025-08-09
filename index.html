@@ -3,74 +3,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Weather App with Forecast</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Smart Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="app" class="app">
+    <header class="topbar">
+      <div class="brand">Smart Weather</div>
 
-  <div class="weather-wrap">
-    <div class="left">
-      <div class="brand">
-        <div class="logo">W</div>
-        <div>
-          <h1>Weather App</h1>
-          <p class="subtitle">Current weather, hourly & daily forecast</p>
+      <div class="controls">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Search city..." aria-label="Search city" autocomplete="off"/>
+          <div id="autocomplete" class="autocomplete" role="listbox" hidden></div>
         </div>
+
+        <button id="detectBtn" class="btn small" title="Detect my location">📍</button>
+
+        <button id="themeToggle" class="btn small" title="Toggle light / dark">🌙</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="loader" class="loader hidden" aria-hidden="true">
+        <div class="spinner"></div>
       </div>
 
-      <div class="search">
-        <input id="locationInput" type="text" placeholder="Enter city name or ZIP/postcode" />
-        <button id="searchBtn">Get Weather</button>
-        <button id="locateBtn" class="secondary-btn">📍 Detect</button>
-      </div>
-
-      <div class="info">
-        <div class="card-small" id="lastUpdated" style="display:none;"></div>
-      </div>
-
-      <div id="message" class="msg"></div>
-    </div>
-
-    <div class="right">
-      
-      <div id="currentWeather">
-        <div id="iconWrap">
-          <img id="conditionIcon" src="" alt="" width="64" height="64" style="display:none;">
-          <div>
-            <p class="location" id="place">—</p>
-            <p class="cond" id="conditionText">—</p>
-          </div>
-        </div>
-        <h2 class="temp"><span id="tempNum">--</span><small>°C</small></h2>
-        <div class="meta-list">
-          <div class="meta-item">
-            <b id="feelsLike">--°C</b>Feels like
-          </div>
-          <div class="meta-item">
-            <b id="humidity">--%</b>Humidity
-          </div>
-          <div class="meta-item">
-            <b id="wind">-- kph</b>Wind
+      <section id="current" class="card current">
+        <div class="current-left">
+          <div id="locationName" class="location">—</div>
+          <div id="localTime" class="muted">—</div>
+          <div id="conditionText" class="condition">—</div>
+          <div class="temps">
+            <div class="tempMain">
+              <span id="tempC">--</span> <small>°C</small>
+            </div>
+            <div class="tempMeta">
+              <div>Feels: <span id="feelsLike">--°C</span></div>
+              <div>Humidity: <span id="humidity">--%</span></div>
+              <div>Wind: <span id="wind">-- kph</span></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      
-      <div class="forecast-section">
-        <h3>Hourly Forecast</h3>
-        <div class="forecast-cards" id="hourlyForecast"></div>
-      </div>
+        <div class="current-right">
+          <img id="conditionIcon" src="" alt="" width="100" height="100" style="display:none">
+          <div class="sun-times">
+            <div>Sunrise: <b id="sunrise">--:--</b></div>
+            <div>Sunset: <b id="sunset">--:--</b></div>
+          </div>
+        </div>
+      </section>
 
-      
-      <div class="forecast-section">
-        <h3>Daily Forecast</h3>
-        <div class="forecast-cards" id="dailyForecast"></div>
-      </div>
-    </div>
+      <section class="card forecast">
+        <h3 class="heading">5-Day Forecast</h3>
+        <div id="dailyContainer" class="forecast-scroll" aria-live="polite"></div>
+      </section>
+
+      <section class="card hourly">
+        <h3 class="heading">Hourly (Today)</h3>
+        <div id="hourlyContainer" class="forecast-scroll" aria-live="polite"></div>
+      </section>
+
+      <div id="msg" class="msg" role="status" aria-live="polite"></div>
+
+    </main>
 
     
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
